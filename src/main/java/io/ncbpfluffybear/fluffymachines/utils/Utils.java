@@ -70,7 +70,7 @@ public final class Utils {
     }
 
     public static String multiBlockWarning() {
-        return "&c这是个多方块结构!";
+        return "&cThis is a Multiblock machine!";
     }
 
     // TODO: Deprecate custom model data method of detecting non interactables

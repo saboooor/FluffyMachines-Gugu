@@ -46,7 +46,7 @@ public class BackpackUnloader extends SlimefunItem implements EnergyNetComponent
 
         addItemHandler(onBreak());
 
-        new BlockMenuPreset(getId(), "&e背包卸载机") {
+        new BlockMenuPreset(getId(), "&eBackpack Unloader") {
 
             @Override
             public void init() {
@@ -129,7 +129,7 @@ public class BackpackUnloader extends SlimefunItem implements EnergyNetComponent
                 // No ID
                 List<String> lore = inputItem.getItemMeta().getLore();
                 for (String s : lore) {
-                    if (s.equals(ChatColor.GRAY + "所有者: ")) {
+                    if (s.equals(ChatColor.GRAY + "ID: <ID>")) {
                         rejectInput(inv);
                         return;
                     }
