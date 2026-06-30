@@ -10,8 +10,9 @@ import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.ncbpfluffybear.fluffymachines.FluffyMachines;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import net.guizhanss.guizhanlib.minecraft.helper.inventory.ItemStackHelper;
 import org.bukkit.Bukkit;
+import org.bukkit.enchantments.Enchantment;
+import java.util.Locale;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -135,7 +136,38 @@ public final class Utils {
     }
 
     public static String getViewableName(ItemStack item) {
-        return ItemStackHelper.getDisplayName(item);
+        if (item == null) {
+            return "";
+        }
+        if (item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
+            return item.getItemMeta().getDisplayName();
+        }
+        return humanize(item.getType().name());
+    }
+
+    public static String humanize(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        String[] words = input.replace('-', '_').split("_");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (word.isEmpty()) continue;
+            sb.append(Character.toUpperCase(word.charAt(0)))
+              .append(word.substring(1).toLowerCase(Locale.ROOT));
+            if (i < words.length - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
+    }
+
+    public static String getEnchantmentName(Enchantment enchantment) {
+        if (enchantment == null) {
+            return "";
+        }
+        return humanize(enchantment.getKey().getKey());
     }
 
     public static String toRoman(int number) {

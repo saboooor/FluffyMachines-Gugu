@@ -1,7 +1,7 @@
 package net.guizhanss.fluffymachines.utils;
 
 import lombok.experimental.UtilityClass;
-import net.guizhanss.guizhanlib.common.utils.StringUtil;
+import io.ncbpfluffybear.fluffymachines.utils.Utils;
 
 import java.util.Locale;
 
@@ -19,7 +19,7 @@ public final class MetalUtils {
             case "ALUMINUM" -> "Aluminum";
             case "ZINC" -> "Zinc";
             case "MAGNESIUM" -> "Magnesium";
-            default -> StringUtil.humanize(type);
+            default -> Utils.humanize(type);
         };
     }
 }

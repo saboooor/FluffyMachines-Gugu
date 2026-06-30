@@ -25,8 +25,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import lombok.SneakyThrows;
-import net.guizhanss.minecraft.guizhanlib.updater.GuizhanUpdater;
-import net.guizhanss.slimefun4.utils.WikiUtils;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -57,10 +55,6 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
         instance = this;
         // Read something from your config.yml
         Config cfg = new Config(this);
-
-        if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build ")) {
-            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "FluffyMachines", "master");
-        }
 
         // Register ACT Recipes
         Iterator<Recipe> recipeIterator = Bukkit.recipeIterator();
@@ -109,8 +103,6 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
         // Registering Items
         FluffyItemSetup.setup(this);
         FluffyItemSetup.setupBarrels(this);
-
-        WikiUtils.setupJson(this);
 
         // Register Events Class
         getServer().getPluginManager().registerEvents(new Events(), this);
